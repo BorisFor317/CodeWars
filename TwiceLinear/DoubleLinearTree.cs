@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
@@ -8,7 +7,7 @@ namespace TwiceLinear
     {
         public uint Depth => (uint) levels.Count - 1;
         
-        private List<TreeLevel> levels = new List<TreeLevel>();
+        private List<TreeLevel> levels = new List<TreeLevel>(TreeLevel.MaxPossibleLevel);
 
         public DoubleLinearTree()
         {
@@ -20,34 +19,25 @@ namespace TwiceLinear
             levels.Add(TreeLevel.ZeroLevel);
             EnsureDepth(depth);
         }
-
-        public IEnumerable<int> GetValues(uint startLevel, uint endLevel)
+        
+        public TreeLevel GetLevel(int level)
         {
-            if (endLevel < startLevel)
-                throw new ArgumentException("End level must be bigger or equal than start level");
-            
-            EnsureDepth(endLevel);
-            for (var i = (int) startLevel; i <= endLevel; ++i)
-            {
-                var level = levels[i];
-                for (var j = 0; j < level.Length; ++j)
-                {
-                    yield return level[j];
-                }
-            }
+            EnsureDepth((uint) level);
+            return levels[level];
         }
-
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void EnsureDepth(uint requestedDepth)
         {
-            while (requestedDepth >= this.Depth)
+            while (Depth < requestedDepth)
             {
-                var maxLevel = GetMaxLevel();
-                var newLevel = TreeLevel.FromPrevious(maxLevel);
+                var lastLevel = GetLastLevel();
+                var newLevel = TreeLevel.FromPrevious(lastLevel);
                 levels.Add(newLevel);
             }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private TreeLevel GetMaxLevel() => levels[levels.Count - 1];
+        private TreeLevel GetLastLevel() => levels[levels.Count - 1];
     }
 }

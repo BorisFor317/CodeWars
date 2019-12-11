@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace TwiceLinear
 {
@@ -9,42 +10,43 @@ namespace TwiceLinear
         // Was computed as m / n, where
         // n -- level, at was computed only 'Z'
         // m -- level, which only 'Y' would beat only 'Z' at level n
-        private const double NeededLevelScale = 2;
+        private const double NeededLevelScale = 1.585;
         
         private DoubleLinearTree tree = new DoubleLinearTree();
-        private SortedSet<int> sequence = new SortedSet<int>();
+        private SortedSet<long> sequence = new SortedSet<long>();
 
         private uint lastLevelAdded;
         
-        public int GetValue(int index)
+        public long GetValue(int index)
         {
             var neededLevel = GetNeededLevel(index);
             if (neededLevel > lastLevelAdded)
             {
-                AddLevelToSequence(neededLevel);
+                AddLevelsToSequence(neededLevel);
             }
 
             return sequence.ElementAt(index);
         }
 
-        private void AddLevelToSequence(uint level)
+        private void AddLevelsToSequence(uint level)
         {
-            foreach (var value in tree.GetValues(lastLevelAdded, level))
+            for (var i = (int) lastLevelAdded; i < level; ++i)
             {
-                sequence.Add(value);
+                sequence.UnionWith(tree.GetLevel(i));
             }
             
             lastLevelAdded = level;
         }
 
-        private static uint GetNeededLevel(int index)
+        private static uint GetNeededLevel(long index)
         {
             var minLevel = IndexToMinLevel(index);
             var neededLevelApproximation = minLevel * NeededLevelScale;
             return (uint) Math.Ceiling(neededLevelApproximation);
         }
 
-        private static uint IndexToMinLevel(int index)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static uint IndexToMinLevel(long index)
         {
             var level = 0;
             var count = 0;

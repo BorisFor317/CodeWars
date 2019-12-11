@@ -19,7 +19,6 @@ namespace TwiceLinear
             testing(DoubleLinear.DblLinear(20), 57);
             testing(DoubleLinear.DblLinear(30), 91);
             testing(DoubleLinear.DblLinear(50), 175);
-            testing(DoubleLinear.DblLinear(150), 335146);
         }
     }
 }

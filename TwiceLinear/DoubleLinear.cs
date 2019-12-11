@@ -5,9 +5,8 @@ namespace TwiceLinear
         private static readonly DoubleLinearSequence Sequence = new DoubleLinearSequence();
         
         public static int DblLinear(int n)
-        {
-            var s = new DoubleLinearSequence();
-            return s.GetValue(n);
+        { 
+            return (int) Sequence.GetValue(n);
         }
     }
 }

@@ -19,11 +19,11 @@ namespace Benchmarks
         [SimpleJob(RuntimeMoniker.NetCoreApp22)]
         public class SequenceBenchmark
         {
-            [Params(100, 1000)]
+            [Params(100, 1000, 2000)]
             public int N;
             
             [Benchmark]
-            public int ComputeDoubleLinearTree() => new DoubleLinearSequence().GetValue(N);
+            public long ComputeDoubleLinearElement() => new DoubleLinearSequence().GetValue(N);
         }
     }
 }
