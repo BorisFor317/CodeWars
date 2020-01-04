@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwiceLinear", "TwiceLinear\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarks", "Benchmarks\Benchmarks.csproj", "{4B34029C-77E9-42FF-AE61-055FF8D8A438}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedIsGood", "GreedIsGood\GreedIsGood.csproj", "{B082AA75-A6E2-418C-A9F1-18944432838F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Permutations", "Permutations\Permutations.csproj", "{4121AD82-B2F8-4895-B614-D84F3C0BDB25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{4B34029C-77E9-42FF-AE61-055FF8D8A438}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B34029C-77E9-42FF-AE61-055FF8D8A438}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B34029C-77E9-42FF-AE61-055FF8D8A438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B082AA75-A6E2-418C-A9F1-18944432838F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B082AA75-A6E2-418C-A9F1-18944432838F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B082AA75-A6E2-418C-A9F1-18944432838F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B082AA75-A6E2-418C-A9F1-18944432838F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4121AD82-B2F8-4895-B614-D84F3C0BDB25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4121AD82-B2F8-4895-B614-D84F3C0BDB25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4121AD82-B2F8-4895-B614-D84F3C0BDB25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4121AD82-B2F8-4895-B614-D84F3C0BDB25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
