@@ -27,7 +27,7 @@ namespace Permutations
         
         public GeneratingElements<T> WithoutOne(T element)
         {
-            var indexToRemove = Array.BinarySearch(elements, element);
+            var indexToRemove = Array.IndexOf(elements, element);
             var newElements = new T[Size - 1];
             Array.Copy(elements, 0, newElements, 0, indexToRemove);
             Array.Copy(elements, indexToRemove + 1,

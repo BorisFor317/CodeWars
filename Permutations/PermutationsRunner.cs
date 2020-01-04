@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,8 +8,7 @@ namespace Permutations
         public static List<string> SinglePermutations(string s)
         {
             var charArray = s.ToCharArray();
-            Array.Sort(charArray);
-            
+
             var permutations = new AtomicIfOneElementSelector<char>().Select(
                 new GeneratingElements<char>(charArray)
             ).Generate();
